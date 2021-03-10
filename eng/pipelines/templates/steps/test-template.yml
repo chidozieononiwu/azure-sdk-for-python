@@ -1,0 +1,17 @@
+parameters:
+  - name: TestParameter
+    type: string
+    default: 'Test String'
+
+steps:
+  - task: PowerShell@2
+    displayName: Test Writing Github Comments
+    inputs:
+      pwsh: true
+      filePath: $(Build.SourcesDirectory)/eng/common/scripts/Add-IssueComment.ps1
+      arguments: >
+        -RepoOwner "chidozieononiwu"
+        -RepoName "azure-sdk-tools"
+        -IssueNumber 4
+        -Comment ${{ parameters.TestParameter }}
+        -AuthToken "$(GitHubPAT-REPO)"
