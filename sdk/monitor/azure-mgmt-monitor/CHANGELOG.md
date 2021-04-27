@@ -161,6 +161,25 @@ Last but not least, HTTP connection pooling is now enabled by default.
 You should always use a client as a context manager, or call close(), or
 use no more than one client per process.
 
+## 0.5.2 (2018-06-06)
+
+**Features**
+
+  - Model ActionGroupResource has a new parameter voice_receivers
+  - Model ActionGroupResource has a new parameter
+    azure_function_receivers
+  - Model ActionGroupResource has a new parameter logic_app_receivers
+  - Added operation group MetricAlertsOperations
+  - Added operation group ScheduledQueryRulesOperations
+  - Added operation group MetricAlertsStatusOperations
+
+## 0.5.1 (2018-04-16)
+
+**Bugfixes**
+
+  - Fix some invalid models in Python 3
+  - Compatibility of the sdist with wheel 0.31.0
+
 ## 0.6.0 (2018-03-06)
 
 **Features**
@@ -185,24 +204,53 @@ use no more than one client per process.
 
   - Model MetricCriteria has a new required parameter criterion_type
 
-## 0.5.2 (2018-06-06)
+## 0.4.0 (2017-10-25)
 
 **Features**
 
-  - Model ActionGroupResource has a new parameter voice_receivers
-  - Model ActionGroupResource has a new parameter
-    azure_function_receivers
-  - Model ActionGroupResource has a new parameter logic_app_receivers
-  - Added operation group MetricAlertsOperations
-  - Added operation group ScheduledQueryRulesOperations
-  - Added operation group MetricAlertsStatusOperations
+  - Merge into this package the "azure-monitor" package including
+    following operations groups
+      - event categories
+      - activity log
+      - tenant activity log
+      - metrics definitions
+      - metrics
+  - Adding new multi-dimensional metrics API
 
-## 0.5.1 (2018-04-16)
+**Breaking changes**
 
-**Bugfixes**
+  - Some exceptions have moved from CloudError to ErrorResponseException
+  - "service_diagnostic_settings" renamed to "diagnostic_settings"
+  - Update API version of "metrics". Migrating from "azure-monitor" to
+    "metrics" here needs to be rewritten.
 
-  - Fix some invalid models in Python 3
-  - Compatibility of the sdist with wheel 0.31.0
+**Bug fixes**
+
+  - Improving HTTP status code check for better exception
+
+## 0.3.0 (2017-06-30)
+
+**Features**
+
+  - Add action_groups operation group
+  - Add alert_rules.update method
+  - Add autoscale_settings.update method
+  - Add log_profiles.update method
+
+**Breaking changes**
+
+  - activity_log_alerts.update has now flatten parameters
+    "tags/enabled"
+
+## 0.2.1 (2017-04-26)
+
+  - Removal of a REST endpoint not ready to release.
+
+## 0.2.0 (2017-04-19)
+
+  - Add ActivityLogAlerts and DiagnosticSettings
+  - Minor improvements, might be breaking
+  - This wheel package is now built with the azure wheel extension
 
 ## 0.5.0 (2017-03-19)
 
@@ -259,54 +307,6 @@ introduce breaking changes.
   - All operations group have now a "models" attribute
 
 New ApiVersion version of metrics to 2018-01-01
-
-## 0.4.0 (2017-10-25)
-
-**Features**
-
-  - Merge into this package the "azure-monitor" package including
-    following operations groups
-      - event categories
-      - activity log
-      - tenant activity log
-      - metrics definitions
-      - metrics
-  - Adding new multi-dimensional metrics API
-
-**Breaking changes**
-
-  - Some exceptions have moved from CloudError to ErrorResponseException
-  - "service_diagnostic_settings" renamed to "diagnostic_settings"
-  - Update API version of "metrics". Migrating from "azure-monitor" to
-    "metrics" here needs to be rewritten.
-
-**Bug fixes**
-
-  - Improving HTTP status code check for better exception
-
-## 0.3.0 (2017-06-30)
-
-**Features**
-
-  - Add action_groups operation group
-  - Add alert_rules.update method
-  - Add autoscale_settings.update method
-  - Add log_profiles.update method
-
-**Breaking changes**
-
-  - activity_log_alerts.update has now flatten parameters
-    "tags/enabled"
-
-## 0.2.1 (2017-04-26)
-
-  - Removal of a REST endpoint not ready to release.
-
-## 0.2.0 (2017-04-19)
-
-  - Add ActivityLogAlerts and DiagnosticSettings
-  - Minor improvements, might be breaking
-  - This wheel package is now built with the azure wheel extension
 
 ## 0.1.0 (2017-02-16)
 

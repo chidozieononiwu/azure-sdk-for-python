@@ -74,12 +74,6 @@ use no more than one client per process.
   - Model RecordSet has a new parameter target_resource
   - Added operation group DnsResourceReferenceOperations
 
-## 2.0.0 (2018-07-01)
-
-**Bugfixes**
-
-  - Fix ARM compliance (correct settings of location, tags, etc.)
-
 ## 2.0.0rc2 (2018-07-05)
 
 **Features**
@@ -129,6 +123,12 @@ introduce breaking changes.
 **Bugfixes**
 
   - Compatibility of the sdist with wheel 0.31.0
+
+## 2.0.0 (2018-07-01)
+
+**Bugfixes**
+
+  - Fix ARM compliance (correct settings of location, tags, etc.)
 
 ## 2.0.0rc1 (2018-03-14)
 

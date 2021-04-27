@@ -234,6 +234,11 @@ close(), or use no more than one client per process.
   - Added operation group BackupProtectionIntentOperations
   - Added operation group OperationOperations
 
+## 0.1.2 (2019-03-12)
+
+  - Updating permissible versions of the msrestazure package to unblock
+    [Azure/azure-cli#6973](https://github.com/Azure/azure-cli/issues/6973).
+
 ## 0.3.0 (2018-06-27)
 
 **Features**
@@ -325,11 +330,6 @@ introduce breaking changes.
 **Bugfixes**
 
   - Compatibility of the sdist with wheel 0.31.0
-
-## 0.1.2 (2019-03-12)
-
-  - Updating permissible versions of the msrestazure package to unblock
-    [Azure/azure-cli#6973](https://github.com/Azure/azure-cli/issues/6973).
 
 ## 0.1.1 (2017-08-09)
 

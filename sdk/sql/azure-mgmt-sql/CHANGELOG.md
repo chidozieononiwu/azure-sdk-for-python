@@ -82,13 +82,13 @@ This version uses a next-generation code generator that introduces important bre
   - Added operation ReplicationLinksOperations.unlink
   - Added operation ExtendedServerBlobAuditingPoliciesOperations.list_by_server
 
-# 0.18.0 (2020-03-23)
+## 0.18.0 (2020-03-23)
 
 **Features**
 
   - Added operation group ManagedInstanceOperations
 
-# 0.17.0 (2020-03-02)
+## 0.17.0 (2020-03-02)
 
 **Features**
 

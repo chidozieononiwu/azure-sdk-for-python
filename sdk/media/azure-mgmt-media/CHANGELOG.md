@@ -83,48 +83,6 @@ HTTP connection pooling is now enabled by default. You should always use
 a client as a context manager, or call close(), or use no more than one
 client per process.
 
-## 1.1.1 (2018-03-26)
-
-**Features**
-
-  - Model StreamingLocator has a new parameter filters
-
-**Bugfixes**
-
-  - Parameter start of model JpgImage is now required
-  - Parameter filename_pattern of model Mp4Format is now required
-  - Parameter start of model Image is now required
-  - Parameter input_label of model AudioOverlay is now required
-  - Parameter input_label of model Overlay is now required
-  - Parameter filename_pattern of model PngFormat is now required
-  - Parameter bitrate of model H264Layer is now required
-  - Parameter start of model PngImage is now required
-  - Parameter bitrate of model VideoLayer is now required
-  - Parameter formats of model StandardEncoderPreset is now required
-  - Parameter codecs of model StandardEncoderPreset is now required
-  - Parameter filename_pattern of model MultiBitrateFormat is now
-    required
-  - Parameter filename_pattern of model TransportStreamFormat is now
-    required
-  - Parameter filename_pattern of model Format is now required
-  - Parameter filename_pattern of model ImageFormat is now required
-  - Parameter filename_pattern of model JpgFormat is now required
-  - Parameter input_label of model VideoOverlay is now required
-  - Parameter labels of model OutputFile is now required
-
-## 1.1.0 (2018-01-02)
-
-**Bugfixes**
-
-  - Operation JobsOperations.list has the correct list of optional
-    parameters
-  - Operation TransformsOperations.list has the correct list of optional
-    parameters
-  - Operation TransformsOperations.list has the correct list of optional
-    parameters
-  - Operation JobsOperations.list has the correct list of optional
-    parameters
-
 ## 1.0.1 (2018-10-16)
 
 **Bugfix**
@@ -190,6 +148,48 @@ and no compatibility at all is possible.
 
 API version endpoint is now 2018-03-30-preview
 
+## 1.1.1 (2018-03-26)
+
+**Features**
+
+  - Model StreamingLocator has a new parameter filters
+
+**Bugfixes**
+
+  - Parameter start of model JpgImage is now required
+  - Parameter filename_pattern of model Mp4Format is now required
+  - Parameter start of model Image is now required
+  - Parameter input_label of model AudioOverlay is now required
+  - Parameter input_label of model Overlay is now required
+  - Parameter filename_pattern of model PngFormat is now required
+  - Parameter bitrate of model H264Layer is now required
+  - Parameter start of model PngImage is now required
+  - Parameter bitrate of model VideoLayer is now required
+  - Parameter formats of model StandardEncoderPreset is now required
+  - Parameter codecs of model StandardEncoderPreset is now required
+  - Parameter filename_pattern of model MultiBitrateFormat is now
+    required
+  - Parameter filename_pattern of model TransportStreamFormat is now
+    required
+  - Parameter filename_pattern of model Format is now required
+  - Parameter filename_pattern of model ImageFormat is now required
+  - Parameter filename_pattern of model JpgFormat is now required
+  - Parameter input_label of model VideoOverlay is now required
+  - Parameter labels of model OutputFile is now required
+
+## 1.1.0 (2018-01-02)
+
+**Bugfixes**
+
+  - Operation JobsOperations.list has the correct list of optional
+    parameters
+  - Operation TransformsOperations.list has the correct list of optional
+    parameters
+  - Operation TransformsOperations.list has the correct list of optional
+    parameters
+  - Operation JobsOperations.list has the correct list of optional
+    parameters
+
 ## 0.2.0 (2017-09-14)
 
 **Bug fixes**
@@ -206,10 +206,6 @@ API version endpoint is now 2018-03-30-preview
     longer than 24 characters (not CloudError)
   - Some keyword arguments have been renamed "parameters"
 
-## 0.1.2 (2016-06-27)
-
-This wheel package is built with the azure wheel extension
-
 ## 0.1.1 (2016-12-12)
 
   - Best parameters check (you might experience exception change from
@@ -220,3 +216,7 @@ This wheel package is built with the azure wheel extension
 ## 0.1.0 (2016-11-07)
 
   - Initial preview release
+## 0.1.2 (2016-06-27)
+
+This wheel package is built with the azure wheel extension
+

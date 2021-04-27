@@ -556,17 +556,17 @@ use no more than one client per process.
 >     DiskState.ActiveUpload) that are associated with the upload
 >     process.
 
-## 4.4.0 (2018-01-04)
+## 3.1.0rc3 (2018-11-01)
 
 **Features**
 
-  - Model VirtualMachineScaleSetExtension has a new parameter
-    provision_after_extensions
-  - Operation VirtualMachineScaleSetVMsOperations.reimage has a new
-    parameter temp_disk
-  - Operation VirtualMachineScaleSetsOperations.reimage has a new
-    parameter temp_disk
-  - Added operation VirtualMachinesOperations.reimage
+  - Add VirtualMachineScaleSetNetworkConfiguration ->
+    enable_ip_forwarding
+  - Add VirtualMachineScaleSetUpdateNetworkConfiguration ->
+    enable_ip_forwarding
+  - Add VirtualMachineScaleSetVMProfile -> priority
+  - Add ApiVersion 2017-12-01 of virtual_machine_run_commands (new
+    default)
 
 ## 4.3.1 (2018-10-15)
 
@@ -733,17 +733,17 @@ introduce breaking changes.
   - Add images.update
   - Add virtual_machine.update
 
-## 3.1.0rc3 (2018-11-01)
+## 4.4.0 (2018-01-04)
 
 **Features**
 
-  - Add VirtualMachineScaleSetNetworkConfiguration ->
-    enable_ip_forwarding
-  - Add VirtualMachineScaleSetUpdateNetworkConfiguration ->
-    enable_ip_forwarding
-  - Add VirtualMachineScaleSetVMProfile -> priority
-  - Add ApiVersion 2017-12-01 of virtual_machine_run_commands (new
-    default)
+  - Model VirtualMachineScaleSetExtension has a new parameter
+    provision_after_extensions
+  - Operation VirtualMachineScaleSetVMsOperations.reimage has a new
+    parameter temp_disk
+  - Operation VirtualMachineScaleSetsOperations.reimage has a new
+    parameter temp_disk
+  - Added operation VirtualMachinesOperations.reimage
 
 ## 3.1.0rc2 (2017-12-14)
 

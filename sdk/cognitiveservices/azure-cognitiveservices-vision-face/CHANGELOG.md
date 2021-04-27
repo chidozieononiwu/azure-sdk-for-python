@@ -1,5 +1,11 @@
 # Release History
 
+## 0.4.1 (2020-06-24)
+
+**Features**
+
+- Add recognition_03 support
+
 ## 0.5.0 (2020-03-12)
 
 **Features**
@@ -10,12 +16,6 @@
 
   - Operation FaceOperations.detect_with_stream has a new signature
   - Operation FaceOperations.detect_with_url has a new signature
-
-## 0.4.1 (2020-06-24)
-
-**Features**
-
-- Add recognition_03 support
 
 ## 0.4.0 (2019-06-27)
 

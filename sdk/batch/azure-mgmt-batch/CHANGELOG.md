@@ -72,14 +72,14 @@ This version uses a next-generation code generator that introduces important bre
 ### Fixes
 - [Breaking] Move tags from being an argument on create and update pool parameters to being a part of `BatchAccountCreateParameters` and `BatchAccountUpdateParameters` to properly reflect the REST API
 
-## 8.0.1 (2020-05-26) [Deprecated]
+## 8.0.1 (2020-05-26)
 ### Notices
 - This version targeted an invalid REST API. This version does not honor the associated REST API contract.
 
 ### Bugfixes
 - Fix issues in PrivateEndpointConnection get and update methods due to mistakes in the Swagger specification causing validation to fail. It is advised to use version 9+ to make use of the features added in this version.
 
-## 8.0.0 (2020-04-10) [Deprecated]
+## 8.0.0 (2020-04-10)
 ### Notices
 - This version targeted an invalid REST API. Currently the PrivateEndpoint get() and update() functions do not function correctly. It is advised to use version 9+ to make use of the features added in this version.
 

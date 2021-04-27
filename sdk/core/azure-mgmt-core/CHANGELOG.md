@@ -1,4 +1,3 @@
-
 # Release History
 
 ## 1.2.3 (Unreleased)
