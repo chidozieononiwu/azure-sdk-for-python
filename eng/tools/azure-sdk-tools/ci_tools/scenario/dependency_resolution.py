@@ -321,7 +321,11 @@ def filter_dev_requirements(
 
 
 def install_packages(packages: List[str], req_file: str, python_executable: str, cwd: Optional[str] = None) -> None:
-    """Install resolved packages (and optionally a requirements file) into the target environment."""
+    """Install resolved packages (and optionally a requirements file) into the target environment.
+    
+    Respects PIP_INDEX_URL and PIP_EXTRA_INDEX_URL environment variables to support custom feeds 
+    (e.g., CFS dev feed) for optional dependencies.
+    """
 
     python_exe = python_executable or sys.executable
     commands = get_pip_command(python_exe)
@@ -329,6 +333,11 @@ def install_packages(packages: List[str], req_file: str, python_executable: str,
 
     if commands[0] == "uv":
         commands.extend(["--python", python_exe])
+        # For uv, pass index URLs explicitly if set
+        if os.environ.get("PIP_INDEX_URL"):
+            commands.extend(["--index-url", os.environ.get("PIP_INDEX_URL")])
+        if os.environ.get("PIP_EXTRA_INDEX_URL"):
+            commands.extend(["--extra-index-url", os.environ.get("PIP_EXTRA_INDEX_URL")])
 
     if packages:
         commands.extend(packages)
@@ -337,4 +346,12 @@ def install_packages(packages: List[str], req_file: str, python_executable: str,
         commands.extend(["-r", req_file])
 
     logger.info("Installing packages. Command: %s", commands)
-    subprocess.check_call(commands, cwd=cwd)
+    logger.info(
+        "Feed configuration - PIP_INDEX_URL: %s, PIP_EXTRA_INDEX_URL: %s",
+        os.environ.get("PIP_INDEX_URL", "default PyPI"),
+        os.environ.get("PIP_EXTRA_INDEX_URL", "not set"),
+    )
+    
+    # Preserve all environment variables including custom feed URLs
+    env = os.environ.copy()
+    subprocess.check_call(commands, cwd=cwd, env=env)
