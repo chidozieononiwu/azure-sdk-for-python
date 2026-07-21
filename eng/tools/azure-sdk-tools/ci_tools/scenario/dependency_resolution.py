@@ -330,14 +330,24 @@ def install_packages(packages: List[str], req_file: str, python_executable: str,
     python_exe = python_executable or sys.executable
     commands = get_pip_command(python_exe)
     commands.append("install")
+    env = os.environ.copy()
+
+    pip_index_url = env.get("PIP_INDEX_URL")
+    pip_extra_index_url = env.get("PIP_EXTRA_INDEX_URL")
 
     if commands[0] == "uv":
         commands.extend(["--python", python_exe])
-        # For uv, pass index URLs explicitly if set
-        if os.environ.get("PIP_INDEX_URL"):
-            commands.extend(["--index-url", os.environ.get("PIP_INDEX_URL")])
-        if os.environ.get("PIP_EXTRA_INDEX_URL"):
-            commands.extend(["--extra-index-url", os.environ.get("PIP_EXTRA_INDEX_URL")])
+        # Ensure uv resolves through the authenticated feed while keeping credentials out of args/logs.
+        if pip_index_url and not env.get("UV_DEFAULT_INDEX"):
+            env["UV_DEFAULT_INDEX"] = pip_index_url
+        if pip_extra_index_url and not env.get("UV_EXTRA_INDEX_URL"):
+            env["UV_EXTRA_INDEX_URL"] = pip_extra_index_url
+    else:
+        # For pip, pass index URLs as command-line arguments
+        if pip_index_url:
+            commands.extend(["--index-url", pip_index_url])
+        if pip_extra_index_url:
+            commands.extend(["--extra-index-url", pip_extra_index_url])
 
     if packages:
         commands.extend(packages)
@@ -347,11 +357,10 @@ def install_packages(packages: List[str], req_file: str, python_executable: str,
 
     logger.info("Installing packages. Command: %s", commands)
     logger.info(
-        "Feed configuration - PIP_INDEX_URL: %s, PIP_EXTRA_INDEX_URL: %s",
-        os.environ.get("PIP_INDEX_URL", "default PyPI"),
-        os.environ.get("PIP_EXTRA_INDEX_URL", "not set"),
+        "Feed configuration - index configured: %s, extra index configured: %s",
+        bool(pip_index_url),
+        bool(pip_extra_index_url),
     )
-    
-    # Preserve all environment variables including custom feed URLs
-    env = os.environ.copy()
+
+    # Preserve all environment variables and keep feed credentials out of command logs.
     subprocess.check_call(commands, cwd=cwd, env=env)
