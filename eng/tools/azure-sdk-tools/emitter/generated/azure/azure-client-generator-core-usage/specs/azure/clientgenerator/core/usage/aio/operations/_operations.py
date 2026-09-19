@@ -26,7 +26,7 @@ from azure.core.rest import AsyncHttpResponse, HttpRequest
 from azure.core.tracing.decorator_async import distributed_trace_async
 from azure.core.utils import case_insensitive_dict
 
-from ... import models as _models
+from ... import models as _models, types as _types
 from ..._utils.model_base import SdkJSONEncoder, _deserialize
 from ..._utils.serialization import Deserializer, Serializer
 from ...operations._operations import (
@@ -38,12 +38,11 @@ from ...operations._operations import (
 )
 from .._configuration import UsageClientConfiguration
 
-JSON = MutableMapping[str, Any]
 T = TypeVar("T")
 ClsType = Optional[Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, dict[str, Any]], Any]]
 
 
-class ModelInOperationOperations:
+class ModelInOperationOperations:  # pylint: disable=docstring-missing-param
     """
     .. warning::
         **DO NOT** instantiate this class directly.
@@ -70,7 +69,7 @@ class ModelInOperationOperations:
 
            {
              "name": "Madge"
-           }.
+           }
 
         :param body: Required.
         :type body: ~specs.azure.clientgenerator.core.usage.models.InputModel
@@ -83,17 +82,19 @@ class ModelInOperationOperations:
         """
 
     @overload
-    async def input_to_input_output(self, body: JSON, *, content_type: str = "application/json", **kwargs: Any) -> None:
+    async def input_to_input_output(
+        self, body: _types.InputModel, *, content_type: str = "application/json", **kwargs: Any
+    ) -> None:
         """Expected body parameter:
 
         .. code-block:: json
 
            {
              "name": "Madge"
-           }.
+           }
 
         :param body: Required.
-        :type body: JSON
+        :type body: ~specs.azure.clientgenerator.core.usage.types.InputModel
         :keyword content_type: Body Parameter content-type. Content type parameter for JSON body.
          Default value is "application/json".
         :paramtype content_type: str
@@ -112,7 +113,7 @@ class ModelInOperationOperations:
 
            {
              "name": "Madge"
-           }.
+           }
 
         :param body: Required.
         :type body: IO[bytes]
@@ -125,17 +126,20 @@ class ModelInOperationOperations:
         """
 
     @distributed_trace_async
-    async def input_to_input_output(self, body: Union[_models.InputModel, JSON, IO[bytes]], **kwargs: Any) -> None:
+    async def input_to_input_output(
+        self, body: Union[_models.InputModel, _types.InputModel, IO[bytes]], **kwargs: Any
+    ) -> None:
         """Expected body parameter:
 
         .. code-block:: json
 
            {
              "name": "Madge"
-           }.
+           }
 
-        :param body: Is one of the following types: InputModel, JSON, IO[bytes] Required.
-        :type body: ~specs.azure.clientgenerator.core.usage.models.InputModel or JSON or IO[bytes]
+        :param body: Is either a InputModel type or a IO[bytes] type. Required.
+        :type body: ~specs.azure.clientgenerator.core.usage.models.InputModel or
+         ~specs.azure.clientgenerator.core.usage.types.InputModel or IO[bytes]
         :return: None
         :rtype: None
         :raises ~azure.core.exceptions.HttpResponseError:
@@ -194,7 +198,7 @@ class ModelInOperationOperations:
 
            {
              "name": "Madge"
-           }.
+           }
 
         :return: OutputModel. The OutputModel is compatible with MutableMapping
         :rtype: ~specs.azure.clientgenerator.core.usage.models.OutputModel
@@ -270,7 +274,7 @@ class ModelInOperationOperations:
              "result": {
                "name": "Madge"
              }
-           }.
+           }
 
         :param body: Required.
         :type body: ~specs.azure.clientgenerator.core.usage.models.RoundTripModel
@@ -284,7 +288,7 @@ class ModelInOperationOperations:
 
     @overload
     async def model_in_read_only_property(
-        self, body: JSON, *, content_type: str = "application/json", **kwargs: Any
+        self, body: _types.RoundTripModel, *, content_type: str = "application/json", **kwargs: Any
     ) -> _models.RoundTripModel:
         """ "ResultModel" should be usage=output, as it is read-only and does not exist in request body.
 
@@ -303,10 +307,10 @@ class ModelInOperationOperations:
              "result": {
                "name": "Madge"
              }
-           }.
+           }
 
         :param body: Required.
-        :type body: JSON
+        :type body: ~specs.azure.clientgenerator.core.usage.types.RoundTripModel
         :keyword content_type: Body Parameter content-type. Content type parameter for JSON body.
          Default value is "application/json".
         :paramtype content_type: str
@@ -336,7 +340,7 @@ class ModelInOperationOperations:
              "result": {
                "name": "Madge"
              }
-           }.
+           }
 
         :param body: Required.
         :type body: IO[bytes]
@@ -350,7 +354,7 @@ class ModelInOperationOperations:
 
     @distributed_trace_async
     async def model_in_read_only_property(
-        self, body: Union[_models.RoundTripModel, JSON, IO[bytes]], **kwargs: Any
+        self, body: Union[_models.RoundTripModel, _types.RoundTripModel, IO[bytes]], **kwargs: Any
     ) -> _models.RoundTripModel:
         """ "ResultModel" should be usage=output, as it is read-only and does not exist in request body.
 
@@ -369,10 +373,11 @@ class ModelInOperationOperations:
              "result": {
                "name": "Madge"
              }
-           }.
+           }
 
-        :param body: Is one of the following types: RoundTripModel, JSON, IO[bytes] Required.
-        :type body: ~specs.azure.clientgenerator.core.usage.models.RoundTripModel or JSON or IO[bytes]
+        :param body: Is either a RoundTripModel type or a IO[bytes] type. Required.
+        :type body: ~specs.azure.clientgenerator.core.usage.models.RoundTripModel or
+         ~specs.azure.clientgenerator.core.usage.types.RoundTripModel or IO[bytes]
         :return: RoundTripModel. The RoundTripModel is compatible with MutableMapping
         :rtype: ~specs.azure.clientgenerator.core.usage.models.RoundTripModel
         :raises ~azure.core.exceptions.HttpResponseError:
@@ -447,7 +452,7 @@ class ModelInOperationOperations:
            {
              "name": "name",
              "desc": "desc"
-           }.
+           }
 
         :param body: Required.
         :type body: any
@@ -497,7 +502,7 @@ class ModelInOperationOperations:
             return cls(pipeline_response, None, {})  # type: ignore
 
 
-class NamespaceUsageOperations:
+class NamespaceUsageOperations:  # pylint: disable=docstring-missing-param
     """
     .. warning::
         **DO NOT** instantiate this class directly.
@@ -524,7 +529,7 @@ class NamespaceUsageOperations:
 
            {
              "name": "test"
-           }.
+           }
 
         :param body: Required.
         :type body: any
